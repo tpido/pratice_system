@@ -33,13 +33,12 @@
           撰写实习报告
         </el-menu-item>
       </el-sub-menu>
-      <el-sub-menu index="3">
+      <el-sub-menu index="4">
         <template #title>
           <el-icon><Promotion /></el-icon>
           <span>班级管理</span>
         </template>
-        <el-menu-item index="3-1">加入班级</el-menu-item>
-        <el-menu-item index="3-2">查看班级</el-menu-item>
+        <el-menu-item index="/main/join-class">加入班级</el-menu-item>
       </el-sub-menu>
     </el-menu>
   </div>

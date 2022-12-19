@@ -54,6 +54,12 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
           import("@/views/Main/system/workmanagement/write-pratice-report.vue"),
       },
+      {
+        name: "join-class",
+        path: "join-class",
+        component: () =>
+          import("@/views/Main/system/classManagement/join-class.vue"),
+      },
     ],
   },
   {

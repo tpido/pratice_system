@@ -19,14 +19,18 @@
 </template>
 
 <script setup lang="ts">
+import postLog from "@/service/request/post-log";
+import Cache from "@/utils/Cache";
 import { reactive } from "vue";
 
 const form = reactive({
   desc: "",
 });
 
-const submitLogAction = () => {
+const id = Number(Cache.getCache("id"));
+const submitLogAction = async () => {
   console.log("submitLogAction");
+  const data = await postLog(id, form.desc);
 };
 </script>
 

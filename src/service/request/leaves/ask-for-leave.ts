@@ -1,4 +1,4 @@
-import Myrequest from "..";
+import Myrequest from "@/service";
 
 export default function askForLeave(data: any) {
   return Myrequest({

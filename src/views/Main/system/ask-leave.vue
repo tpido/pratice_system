@@ -42,7 +42,8 @@
 </template>
 
 <script lang="ts" setup>
-import askForLeave from "@/service/request/ask-for-leave";
+import askForLeave from "@/service/request/leaves/ask-for-leave";
+import { ElMessage } from "element-plus";
 import { reactive } from "vue";
 // do not use same name with ref
 const form = reactive({
@@ -52,9 +53,21 @@ const form = reactive({
   endTime: "",
   message: "",
 });
-
 //
-const submitAction = () => {
+const submitAction = async () => {
+  const res: any = await askForLeave({ ...form });
+  console.log(res);
+  if (res.code === 200) {
+    ElMessage({
+      message: res.message,
+      type: "success",
+    });
+  } else {
+    ElMessage({
+      message: res.message,
+      type: "error",
+    });
+  }
   console.log("submit!,", form);
 };
 </script>
