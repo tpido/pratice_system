@@ -7,11 +7,13 @@
       <el-container>
         <el-header><NavFold @fold-action="collapseHandle" /> </el-header>
         <el-main>
-          <router-view v-slot="{ Component }">
-            <keep-alive>
-              <component :is="Component" />
-            </keep-alive>
-          </router-view>
+          <Suspense>
+            <router-view v-slot="{ Component }">
+              <keep-alive include="check-in">
+                <component :is="Component" />
+              </keep-alive>
+            </router-view>
+          </Suspense>
         </el-main>
       </el-container>
     </el-container>
@@ -21,10 +23,9 @@
 <script setup lang="ts">
 import NavFold from "@/components/nav-fold.vue";
 import NavMenu from "@/components/nav-menu.vue";
-import { ref } from "vue";
-
+import { ref, Suspense } from "vue";
 const isCollapse = ref(false);
-
+Suspense;
 const collapseHandle = () => {
   isCollapse.value = !isCollapse.value;
   // console.log(isCollapse.value);

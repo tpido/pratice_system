@@ -11,7 +11,9 @@
     </el-tabs>
     <div class="account-control">
       <el-checkbox v-model="isKeepAccount">记住密码</el-checkbox>
-      <el-checkbox v-model="isStudent">是否学生</el-checkbox>
+      <el-checkbox v-model="isStudent" :true-label="1" :false-label="0"
+        >是否学生</el-checkbox
+      >
       <el-link type="primary">忘记密码</el-link>
     </div>
     <el-button type="primary" class="el-btn" @click="handleBtnClick">
@@ -25,7 +27,7 @@ import { Iphone, User } from "@element-plus/icons";
 import { ref } from "vue";
 import LoginAccount from "./login-account.vue";
 const isKeepAccount = ref(true);
-const isStudent = ref(true);
+const isStudent = ref(0);
 const accountRef = ref<InstanceType<typeof LoginAccount>>();
 
 const handleBtnClick = () => {

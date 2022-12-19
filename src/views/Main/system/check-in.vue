@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+import checkIn from "@/service/request/check-in";
 import Cache from "@/utils/Cache";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
@@ -23,7 +24,7 @@ const isCheckIn = ref(Cache.getCache("isCheckIn") || "false");
 const CheckInBtn = ref();
 const discribRef = ref();
 
-const checkinHandle = () => {
+const checkinHandle = async () => {
   console.log(isCheckIn.value);
   if (isCheckIn.value !== "true") {
     isCheckIn.value = "true";
@@ -32,7 +33,9 @@ const checkinHandle = () => {
     discribRef.value.innerHTML = "打过卡了";
     window.localStorage.setItem("isCheckIn", isCheckIn.value);
     //发送网络请求
-
+    const id = Cache.getCache("id");
+    const checkInRes = await checkIn(Number(id), "guangzhou");
+    console.log(checkInRes);
     router.push("/main/checkin-success");
   }
 };

@@ -44,6 +44,7 @@ const foldHandle = () => {
 const router = useRouter();
 const logoutClick = () => {
   Cache.removeCache("token");
+  Cache.removeCache("id");
   router.push({
     path: "/login",
   });

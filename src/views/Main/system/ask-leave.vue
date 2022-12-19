@@ -1,35 +1,39 @@
 <template>
   <el-form :model="form" label-width="120px">
-    <el-form-item label="请假人">
-      <el-input v-model="form.name" />
-    </el-form-item>
-
     <el-form-item label="请假时间">
       <el-col :span="11">
         <el-date-picker
-          v-model="form.date1"
+          v-model="form.startTime"
           type="date"
           placeholder="Pick a date"
           style="width: 100%"
+          format="YYYY/MM/DD"
+          value-format="YYYY-MM-DD"
+        />
+      </el-col>
+      <el-col class="text-center" :span="2">
+        <span class="text-gray-500">-</span>
+      </el-col>
+      <el-col :span="11">
+        <el-date-picker
+          v-model="form.endTime"
+          type="date"
+          label="Pick a time"
+          placeholder="Pick a time"
+          style="width: 100%"
+          format="YYYY/MM/DD"
+          value-format="YYYY-MM-DD"
         />
       </el-col>
     </el-form-item>
 
-    <el-form-item label="请假类型">
-      <el-radio-group v-model="form.type">
-        <el-radio label="病假" name="type" />
-        <el-radio label="事假" name="type" />
-        <el-radio label="丧假" name="type" />
-      </el-radio-group>
-    </el-form-item>
     <el-form-item label="请假老师">
-      <el-select v-model="form.region" placeholder="选择请假老师">
-        <el-option label="张三" value="zhangsan" />
-        <el-option label="李四" value="lisi" />
+      <el-select v-model="form.teacherId" placeholder="选择请假老师">
+        <el-option label="隔壁老王" :value="2" />
       </el-select>
     </el-form-item>
     <el-form-item label="请假理由">
-      <el-input v-model="form.desc" type="textarea" />
+      <el-input v-model="form.message" type="textarea" />
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="submitAction">提交请假申请</el-button>
@@ -38,18 +42,15 @@
 </template>
 
 <script lang="ts" setup>
+import askForLeave from "@/service/request/ask-for-leave";
 import { reactive } from "vue";
-
 // do not use same name with ref
 const form = reactive({
-  name: "",
-  region: "",
-  date1: "",
-  date2: "",
-  delivery: false,
-  type: [],
-  resource: "",
-  desc: "",
+  userId: Number(window.localStorage.getItem("id")) || 1,
+  teacherId: "",
+  startTime: "",
+  endTime: "",
+  message: "",
 });
 
 //

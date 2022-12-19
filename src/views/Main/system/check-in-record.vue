@@ -1,37 +1,22 @@
 <template>
   <div id="check-in-record">
-    <el-table :data="tableData" border style="width: 100%">
-      <el-table-column prop="date" label="请假日期" width="180" />
-      <el-table-column prop="name" label="请假理由" width="180" />
-      <el-table-column prop="address" label="是否准时打卡" />
+    <el-table :data="object" border style="width: 100%">
+      <el-table-column prop="location" label="打卡地点" width="180" />
+      <el-table-column prop="signTime" label="打卡时间" />
+      <el-table-column prop="activeName" label="实习活动名称" />
     </el-table>
   </div>
 </template>
 
 <script setup lang="ts">
 //表单要发送网络请求
-const tableData = [
-  {
-    date: "2016-05-03",
-    name: "9:43",
-    address: "true",
-  },
-  {
-    date: "2016-05-02",
-    name: "9:43",
-    address: "true",
-  },
-  {
-    date: "2016-05-04",
-    name: "9:43",
-    address: "true",
-  },
-  {
-    date: "2016-05-01",
-    name: "9:43",
-    address: "true",
-  },
-];
+import checkInRecord from "@/service/request/check-in-record";
+import Cache from "@/utils/Cache";
+
+const id = Cache.getCache("id");
+const { object }: any = await checkInRecord(Number(id));
+
+console.log(object);
 </script>
 
 <style lang="less" scoped></style>

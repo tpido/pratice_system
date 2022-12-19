@@ -30,22 +30,31 @@ const account = reactive({
 
 const formRef = ref<InstanceType<typeof ElForm>>();
 
-const loginAction = (isKeepAccount: boolean, isStudent: boolean) => {
+const loginAction = (isKeepAccount: boolean, isStudent: number) => {
   console.log("login_account");
   formRef.value?.validate(async (valid) => {
     if (valid) {
       if (isKeepAccount) {
         Cache.setCache("name", account.name);
         Cache.setCache("password", account.password);
+        Cache.setCache("type", isStudent);
       } else {
         Cache.removeCache("name");
         Cache.removeCache("password");
+        Cache.removeCache("type");
       }
 
-      const LoginRes: any = await loginAuthorization({ ...account });
-      Cache.setCache("token", LoginRes.token);
+      const LoginRes: any = await loginAuthorization({
+        ...account,
+        type: isStudent,
+      });
 
-      if (isStudent) router.push("/main");
+      if (LoginRes.object.token) {
+        Cache.setCache("token", LoginRes.object.token);
+        Cache.setCache("id", LoginRes.object.id);
+      }
+
+      if (isStudent === 1) router.push("/main");
       else router.push("/main-teacher");
     }
   });
