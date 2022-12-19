@@ -30,7 +30,7 @@ const account = reactive({
 
 const formRef = ref<InstanceType<typeof ElForm>>();
 
-const loginAction = (isKeepAccount: boolean) => {
+const loginAction = (isKeepAccount: boolean, isStudent: boolean) => {
   console.log("login_account");
   formRef.value?.validate(async (valid) => {
     if (valid) {
@@ -44,7 +44,9 @@ const loginAction = (isKeepAccount: boolean) => {
 
       const LoginRes: any = await loginAuthorization({ ...account });
       Cache.setCache("token", LoginRes.token);
-      router.push("/main");
+
+      if (isStudent) router.push("/main");
+      else router.push("/main-teacher");
     }
   });
 };

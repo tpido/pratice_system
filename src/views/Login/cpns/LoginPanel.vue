@@ -4,20 +4,14 @@
       <el-tab-pane>
         <template #label>
           <el-icon><User /></el-icon>
-          学生登录
+          登录
         </template>
         <login-account ref="accountRef" />
-      </el-tab-pane>
-      <el-tab-pane label="Config">
-        <template #label>
-          <el-icon><Iphone /></el-icon>
-          老师登录
-        </template>
-        老师登录
       </el-tab-pane>
     </el-tabs>
     <div class="account-control">
       <el-checkbox v-model="isKeepAccount">记住密码</el-checkbox>
+      <el-checkbox v-model="isStudent">是否学生</el-checkbox>
       <el-link type="primary">忘记密码</el-link>
     </div>
     <el-button type="primary" class="el-btn" @click="handleBtnClick">
@@ -31,10 +25,11 @@ import { Iphone, User } from "@element-plus/icons";
 import { ref } from "vue";
 import LoginAccount from "./login-account.vue";
 const isKeepAccount = ref(true);
+const isStudent = ref(true);
 const accountRef = ref<InstanceType<typeof LoginAccount>>();
 
 const handleBtnClick = () => {
-  accountRef.value?.loginAction(isKeepAccount.value);
+  accountRef.value?.loginAction(isKeepAccount.value, isStudent.value);
 };
 </script>
 

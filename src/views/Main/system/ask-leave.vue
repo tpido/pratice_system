@@ -16,11 +16,11 @@
     </el-form-item>
 
     <el-form-item label="请假类型">
-      <el-checkbox-group v-model="form.type">
-        <el-checkbox label="病假" name="type" />
-        <el-checkbox label="事假" name="type" />
-        <el-checkbox label="丧假" name="type" />
-      </el-checkbox-group>
+      <el-radio-group v-model="form.type">
+        <el-radio label="病假" name="type" />
+        <el-radio label="事假" name="type" />
+        <el-radio label="丧假" name="type" />
+      </el-radio-group>
     </el-form-item>
     <el-form-item label="请假老师">
       <el-select v-model="form.region" placeholder="选择请假老师">
@@ -54,7 +54,7 @@ const form = reactive({
 
 //
 const submitAction = () => {
-  console.log("submit!");
+  console.log("submit!,", form);
 };
 </script>
 

@@ -6,9 +6,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { useRouter } from "vue-router";
-</script>
+<script setup lang="ts"></script>
 
 <style lang="less" scoped>
 #check-in-success {

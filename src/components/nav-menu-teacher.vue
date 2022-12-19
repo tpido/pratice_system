@@ -2,7 +2,7 @@
   <div id="nav-menu">
     <div class="logo">
       <img src="~@/assets/img/logo.svg" alt="" />
-      <span>实习管理系统(学生)</span>
+      <span>实习管理系统(老师)</span>
     </div>
 
     <el-menu
@@ -16,30 +16,48 @@
       <el-sub-menu index="1">
         <template #title>
           <el-icon><Calendar /></el-icon>
-          <span>打卡管理</span>
+          <span>请假管理</span>
         </template>
-        <el-menu-item index="/main/checkin"> 立即打卡 </el-menu-item>
-        <el-menu-item index="/main/checkin-record"> 打卡记录 </el-menu-item>
-        <el-menu-item index="/main/askleave">申请请假</el-menu-item>
-        <el-menu-item index="/main/askleave-record">请假记录</el-menu-item>
+        <el-menu-item index="/main-teacher/ask-for-leave-perimit">
+          历史请假
+        </el-menu-item>
       </el-sub-menu>
       <el-sub-menu index="2">
         <template #title>
           <el-icon><Promotion /></el-icon>
-          <span>工作管理</span>
+          <span>实习管理</span>
         </template>
-        <el-menu-item index="/main/writelog">撰写工作日志</el-menu-item>
-        <el-menu-item index="/main/wirtepraticereport">
-          撰写实习报告
-        </el-menu-item>
+        <el-menu-item index="/main-teacher/post-message"
+          >发布实习通知</el-menu-item
+        >
       </el-sub-menu>
       <el-sub-menu index="3">
         <template #title>
           <el-icon><Promotion /></el-icon>
-          <span>班级管理</span>
+          <span>作业管理</span>
         </template>
-        <el-menu-item index="3-1">加入班级</el-menu-item>
-        <el-menu-item index="3-2">查看班级</el-menu-item>
+        <el-menu-item index="/main-teacher/check-log">工作日志</el-menu-item>
+        <el-menu-item index="/main-teacher/check-pratice-report"
+          >实习报告</el-menu-item
+        >
+      </el-sub-menu>
+      <el-sub-menu index="4">
+        <template #title>
+          <el-icon><Promotion /></el-icon>
+          <span>考勤情况</span>
+        </template>
+        <el-menu-item index="/main-teacher/check-checkIn"
+          >考勤情况</el-menu-item
+        >
+      </el-sub-menu>
+      <el-sub-menu index="5">
+        <template #title>
+          <el-icon><Promotion /></el-icon>
+          <span>成绩管理</span>
+        </template>
+        <el-menu-item index="/main-teacher/score-analysis">
+          成绩分析
+        </el-menu-item>
       </el-sub-menu>
     </el-menu>
   </div>

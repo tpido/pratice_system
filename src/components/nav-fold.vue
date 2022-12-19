@@ -6,7 +6,7 @@
         <el-icon size="20px" v-else><Expand /></el-icon>
       </div>
       <div class="info">
-        <!-- <my-bread-crumb :breadcrumbs="breadCrumbsArr"></my-bread-crumb> -->
+        <!-- <my-bread-crumb :breadcbreadrumbs="breadCrumbsArr"></my-bread-crumb> -->
       </div>
     </div>
     <div class="right">
@@ -31,7 +31,6 @@ import { Expand, Fold, UserFilled } from "@element-plus/icons";
 import { computed, defineEmits } from "vue";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { useStore } from "vuex";
 
 /* 是否折叠处理逻辑 */
 const emit = defineEmits(["FoldAction"]);

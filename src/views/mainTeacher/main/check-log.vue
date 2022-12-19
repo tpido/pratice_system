@@ -1,9 +1,13 @@
 <template>
-  <div id="check-in-record">
-    <el-table :data="tableData" border style="width: 100%">
-      <el-table-column prop="date" label="请假日期" width="180" />
-      <el-table-column prop="name" label="批阅者" width="180" />
-      <el-table-column prop="address" label="请假是否通过" />
+  <div id="check-log">
+    <el-table :data="tableData" border>
+      <el-table-column prop="date" label="提交人" width="180" />
+      <el-table-column
+        prop="address"
+        label="提交日期"
+        width="180"
+      ></el-table-column>
+      <el-table-column prop="name" label="日志信息" />
     </el-table>
   </div>
 </template>
