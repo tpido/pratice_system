@@ -21,16 +21,20 @@
 <script setup lang="ts">
 import postLog from "@/service/request/post-log";
 import Cache from "@/utils/Cache";
+import { ElMessage } from "element-plus";
 import { reactive } from "vue";
 
 const form = reactive({
   desc: "",
 });
-
 const id = Number(Cache.getCache("id"));
 const submitLogAction = async () => {
   console.log("submitLogAction");
-  const data = await postLog(id, form.desc);
+  const data: any = await postLog(id, form.desc);
+  ElMessage({
+    message: data.message,
+    type: "success",
+  });
 };
 </script>
 

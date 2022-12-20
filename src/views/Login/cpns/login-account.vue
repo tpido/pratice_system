@@ -15,7 +15,7 @@
 import { reactive, ref } from "vue";
 import { rules } from "../config/rules-config";
 import Cache from "@/utils/Cache";
-import { ElForm } from "element-plus";
+import { ElForm, ElMessage } from "element-plus";
 import { useStore } from "vuex";
 import { loginAuthorization } from "@/service/request/login/login";
 import { useRouter } from "vue-router";
@@ -49,6 +49,18 @@ const loginAction = (isKeepAccount: boolean, isStudent: number) => {
         type: isStudent,
       });
 
+      if (LoginRes.code === 200) {
+        ElMessage({
+          message: LoginRes.message,
+          type: "success",
+        });
+      } else {
+        ElMessage({
+          message: LoginRes.message,
+          type: "error",
+        });
+      }
+      console.log(LoginRes);
       if (LoginRes.object.token) {
         Cache.setCache("token", LoginRes.object.token);
         Cache.setCache("id", LoginRes.object.id);

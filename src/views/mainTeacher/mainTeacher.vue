@@ -8,11 +8,7 @@
         <el-header><NavFold @fold-action="collapseHandle" /> </el-header>
         <el-main>
           <Suspense>
-            <router-view v-slot="{ Component }">
-              <keep-alive>
-                <component :is="Component" />
-              </keep-alive>
-            </router-view>
+            <router-view> </router-view>
           </Suspense>
         </el-main>
       </el-container>
