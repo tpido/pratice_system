@@ -26,7 +26,7 @@ onMounted(() => {
     },
     xAxis: {
       type: "category",
-      data: [resArr1.classId, resArr2.classId],
+      data: [resArr1.className, resArr2.className],
     },
     yAxis: {
       type: "value",
@@ -49,7 +49,7 @@ onMounted(() => {
     },
     xAxis: {
       type: "category",
-      data: [resArr1.classId, resArr2.classId],
+      data: [resArr1.className, resArr2.className],
     },
     yAxis: {
       type: "value",
