@@ -29,7 +29,9 @@
 
     <el-form-item label="请假老师">
       <el-select v-model="form.teacherId" placeholder="选择请假老师">
-        <el-option label="隔壁老王" :value="2" />
+        <template v-for="(item, index) in resArr">
+          <el-option :label="item.name" :value="item.teacherId"></el-option>
+        </template>
       </el-select>
     </el-form-item>
     <el-form-item label="请假理由">
@@ -42,7 +44,9 @@
 </template>
 
 <script lang="ts" setup>
+import getAllTeacher from "@/service/request/get-all-teacher";
 import askForLeave from "@/service/request/leaves/ask-for-leave";
+import Cache from "@/utils/Cache";
 import { ElMessage } from "element-plus";
 import { reactive } from "vue";
 // do not use same name with ref
@@ -53,6 +57,11 @@ const form = reactive({
   endTime: "",
   message: "",
 });
+
+const id = Number(Cache.getCache("id"));
+const { object: resArr }: any = await getAllTeacher();
+console.log(resArr);
+
 //
 const submitAction = async () => {
   const res: any = await askForLeave({ ...form });

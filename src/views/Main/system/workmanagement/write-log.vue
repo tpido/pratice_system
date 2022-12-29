@@ -31,10 +31,13 @@ const id = Number(Cache.getCache("id"));
 const submitLogAction = async () => {
   console.log("submitLogAction");
   const data: any = await postLog(id, form.desc);
-  ElMessage({
-    message: data.message,
-    type: "success",
-  });
+  console.log(data);
+  if (data.code === 200) {
+    ElMessage({
+      message: data.message,
+      type: "success",
+    });
+  }
 };
 </script>
 

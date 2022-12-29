@@ -12,7 +12,7 @@
     <div class="right">
       <el-avatar :icon="UserFilled"></el-avatar>
       <el-dropdown trigger="click">
-        <span> tpido </span>
+        <span> {{ name }} </span>
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item @click="logoutClick">退出登录</el-dropdown-item>
@@ -49,6 +49,8 @@ const logoutClick = () => {
     path: "/login",
   });
 };
+
+const name = Cache.getCache("name");
 </script>
 
 <style lang="less" scoped>

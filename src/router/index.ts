@@ -60,6 +60,11 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
           import("@/views/Main/system/classManagement/join-class.vue"),
       },
+      {
+        name: "activity-notice",
+        path: "activity-notice",
+        component: () => import("@/views/Main/system/activity-notice.vue"),
+      },
     ],
   },
   {
@@ -99,6 +104,11 @@ const routes: Array<RouteRecordRaw> = [
         name: "score-analysis",
         path: "score-analysis",
         component: () => import("@/views/mainTeacher/main/score-analysis.vue"),
+      },
+      {
+        name: "score-report",
+        path: "score-report",
+        component: () => import("@/views/mainTeacher/main/score-report.vue"),
       },
     ],
   },

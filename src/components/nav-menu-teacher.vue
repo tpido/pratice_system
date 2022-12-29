@@ -55,6 +55,9 @@
           <el-icon><Promotion /></el-icon>
           <span>成绩管理</span>
         </template>
+        <el-menu-item index="/main-teacher/score-report">
+          成绩报告于评定
+        </el-menu-item>
         <el-menu-item index="/main-teacher/score-analysis">
           成绩分析
         </el-menu-item>

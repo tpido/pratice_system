@@ -13,6 +13,7 @@
       :router="true"
       default-active="/main/checkin"
     >
+      <el-menu-item index="/main/activity-notice">实习通知</el-menu-item>
       <el-sub-menu index="1">
         <template #title>
           <el-icon><Calendar /></el-icon>

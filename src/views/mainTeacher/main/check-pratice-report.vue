@@ -1,18 +1,25 @@
 <template>
   <div id="check-pratice-report">
-    <el-table :data="tableData" border>
-      <el-table-column prop="date" label="提交人" width="180" />
+    <el-table :data="tableData1" border>
+      <el-table-column prop="name" label="提交人" width="180" />
       <el-table-column
-        prop="address"
+        prop="time"
         label="提交日期"
         width="180"
       ></el-table-column>
-      <el-table-column prop="name" label="实习报告" />
+      <el-table-column prop="activeName" label="实习报告名称" />
+      <el-table-column prop="content" label="实习报告内容" />
     </el-table>
   </div>
 </template>
 
 <script setup lang="ts">
+import teacherGetReports from "@/service/request/teacherGetReports";
+import Cache from "@/utils/Cache";
+
+const id = Number(Cache.getCache("id"));
+const { object: tableData1 }: any = await teacherGetReports(id);
+console.log(tableData1);
 const tableData = [
   {
     date: "2016-05-03",

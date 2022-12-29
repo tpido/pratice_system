@@ -1,7 +1,7 @@
 import Myrequest from "..";
 
 export default function getAllTeacher() {
-  Myrequest({
+  return Myrequest({
     url: "/user/getAllTeacher",
   });
 }

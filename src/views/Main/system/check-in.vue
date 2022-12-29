@@ -34,7 +34,7 @@ const checkinHandle = async () => {
     window.localStorage.setItem("isCheckIn", isCheckIn.value);
     //发送网络请求
     const id = Cache.getCache("id");
-    const checkInRes = await checkIn(Number(id), "guangzhou");
+    const checkInRes = await checkIn(Number(id));
     console.log(checkInRes);
     router.push("/main/checkin-success");
   }

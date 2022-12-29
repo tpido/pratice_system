@@ -20,13 +20,24 @@
 
 <script setup lang="ts">
 import { reactive } from "vue";
-
+import postPraticeReport from "@/service/request/post-pratice-report";
+import Cache from "@/utils/Cache";
+import { ElMessage } from "element-plus";
 const form = reactive({
   desc: "",
 });
 
-const submitPraticeAction = () => {
-  console.log("submitPraticeAction");
+const id = Number(Cache.getCache("id"));
+const submitPraticeAction = async () => {
+  // console.log("submitPraticeAction");
+  const data: any = await postPraticeReport(id, form.desc);
+  console.log(data);
+  if (data.code === 200) {
+    ElMessage({
+      message: data.message,
+      type: "success",
+    });
+  }
 };
 </script>
 
