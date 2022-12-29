@@ -14,7 +14,6 @@
       <el-checkbox v-model="isStudent" :true-label="1" :false-label="0"
         >是否学生</el-checkbox
       >
-      <el-link type="primary">忘记密码</el-link>
     </div>
     <el-button type="primary" class="el-btn" @click="handleBtnClick">
       点击登录
