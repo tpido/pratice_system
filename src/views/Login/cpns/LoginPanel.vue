@@ -11,9 +11,21 @@
     </el-tabs>
     <div class="account-control">
       <el-checkbox v-model="isKeepAccount">记住密码</el-checkbox>
-      <el-checkbox v-model="isStudent" :true-label="1" :false-label="0"
-        >是否学生</el-checkbox
+      <!-- <el-checkbox v-model="isStudent" :true-label="0">老师</el-checkbox> -->
+      <el-checkbox v-model="isStudent" :true-label="0" :false-label="-1"
+        >老师</el-checkbox
       >
+      <el-checkbox v-model="isStudent" :true-label="1" :false-label="-1"
+        >学生</el-checkbox
+      >
+      <el-checkbox v-model="isStudent" :true-label="2" :false-label="-1"
+        >管理员</el-checkbox
+      >
+      <!-- <el-checkbox-group v-model="isStudent" :max="1">
+        <el-checkbox label="Option A" :true-label="0" />
+        <el-checkbox label="Option B" :true-label="1" />
+        <el-checkbox label="Option C" :true-label="2" />
+      </el-checkbox-group> -->
     </div>
     <el-button type="primary" class="el-btn" @click="handleBtnClick">
       点击登录

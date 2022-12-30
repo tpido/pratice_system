@@ -67,6 +67,7 @@ const loginAction = (isKeepAccount: boolean, isStudent: number) => {
       }
 
       if (isStudent === 1) router.push("/main");
+      else if (isStudent === 2) router.push("/main-admin");
       else router.push("/main-teacher");
     }
   });

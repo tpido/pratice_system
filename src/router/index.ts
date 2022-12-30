@@ -112,6 +112,19 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+
+  {
+    name: "main-admin",
+    path: "/main-admin",
+    component: () => import("@/views/mainAdmin/mainAdmin.vue"),
+    children: [
+      {
+        name: "regeister",
+        path: "regeister",
+        component: () => import("@/views/mainAdmin/main/regeister.vue"),
+      },
+    ],
+  },
 ];
 
 const router = createRouter({

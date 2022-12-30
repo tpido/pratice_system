@@ -20,28 +20,6 @@ const id = Number(Cache.getCache("id"));
 
 const data: any = await teacherGetLogs(id);
 console.log(data);
-const tableData = [
-  {
-    date: "2016-05-03",
-    name: "9:43",
-    address: "true",
-  },
-  {
-    date: "2016-05-02",
-    name: "9:43",
-    address: "true",
-  },
-  {
-    date: "2016-05-04",
-    name: "9:43",
-    address: "true",
-  },
-  {
-    date: "2016-05-01",
-    name: "9:43",
-    address: "true",
-  },
-];
 </script>
 
 <style lang="less" scoped></style>

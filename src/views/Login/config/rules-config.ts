@@ -2,8 +2,8 @@ export const rules = {
   name: [
     { required: true, trigger: "blur", message: "账号是必传内容！" },
     {
-      pattern: /^[a-z0-9]{5,10}$/,
-      message: "账号必须是5-10个的字母或者数字!",
+      pattern: /^[a-z0-9]{4,10}$/,
+      message: "账号必须是4-10个的字母或者数字!",
       trigger: "blur",
     },
   ],

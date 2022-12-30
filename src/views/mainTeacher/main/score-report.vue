@@ -65,6 +65,7 @@ import getTeacherClass from "@/service/request/get-teacher-class";
 import teacherSaveStudentScore from "@/service/request/teacher-save-student-score";
 import teacherGetStudentStatus from "@/service/teacher-get-student-status";
 import Cache from "@/utils/Cache";
+import { ElMessage } from "element-plus";
 import { ref, reactive } from "vue";
 
 const classIdRef = ref();
@@ -104,8 +105,19 @@ const correctAction = (row: any) => {
 
 const submitAction = async () => {
   dialogFormVisible.value = false;
-  const data = await teacherSaveStudentScore({ ...form });
+  const data: any = await teacherSaveStudentScore({ ...form });
   console.log(data);
+  if (data.code === 200) {
+    ElMessage({
+      type: "success",
+      message: data.message,
+    });
+  } else {
+    ElMessage({
+      type: "error",
+      message: data.message,
+    });
+  }
   const { object: studentScoreArr }: any = await teacherGetStudentStatus(
     classIdRef.value
   );

@@ -37,6 +37,11 @@ const submitLogAction = async () => {
       message: data.message,
       type: "success",
     });
+  } else {
+    ElMessage({
+      message: data.message,
+      type: "error",
+    });
   }
 };
 </script>
