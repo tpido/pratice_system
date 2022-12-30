@@ -6,7 +6,6 @@ export default function checkIn(id: number) {
     method: "post",
     params: {
       id,
-      location,
     },
   });
 }
