@@ -22,7 +22,31 @@
           >
         </template>
       </el-table-column>
+      <el-table-column fixed="right" label="请假理由" width="120">
+        <template #default="scope">
+          <el-button
+            link
+            type="primary"
+            size="small"
+            @click="handleClick(scope.row)"
+            >请假理由</el-button
+          >
+        </template>
+      </el-table-column>
     </el-table>
+
+    <el-dialog v-model="dialogFormVisible" title="请假理由">
+      <el-form :model="form">
+        <el-form-item :label-width="formLabelWidth">
+          {{ form.reason }}
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="dialogFormVisible = false">取消</el-button>
+        </span>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -32,7 +56,7 @@ import permittAskForLeave from "@/service/request/leaves/permittAskForLeave";
 import Cache from "@/utils/Cache";
 import { ElMessage } from "element-plus";
 import { useRouter } from "vue-router";
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 
 const id = Number(Cache.getCache("id"));
 let { object: resArr }: any = await getAskForLeave(id);
@@ -41,6 +65,7 @@ resArr.forEach((el: any) => {
   if (el.leaveType === 1) el.leaveType2 = "通过";
   if (el.leaveType === 2) el.leaveType2 = "审核中";
 });
+console.log(resArr);
 
 let itemkey = ref(0);
 const router = useRouter();
@@ -68,6 +93,21 @@ const handlenotPermitted = async (row: any, index: number) => {
     type: "success",
   });
 };
+
+const dialogFormVisible = ref(false);
+
+const form = reactive({
+  reason: "",
+});
+
+//请假按钮业务逻辑
+const handleClick = (row: any) => {
+  console.log(row);
+  dialogFormVisible.value = true;
+  form.reason = row.reason;
+};
+
+const formLabelWidth = "140px";
 </script>
 
 <style lang="less" scoped></style>

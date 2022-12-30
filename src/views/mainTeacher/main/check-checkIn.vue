@@ -27,11 +27,16 @@
       ></el-table-column>
       <el-table-column prop="signTime" label="打卡时间" />
     </el-table>
+
+    <el-table :data="askForLeaveArrRef" border class="table2">
+      <el-table-column prop="activeName" label="请假原因" />
+      <el-table-column prop="time" label="请假日期" />
+    </el-table>
   </div>
 </template>
 
 <script setup lang="ts">
-import checkInRecord from "@/service/request/check-in-record";
+import checkInAttend from "@/service/request/checkin-attend";
 import getAllStudents from "@/service/request/get-all-students";
 import Cache from "@/utils/Cache";
 import { ref } from "vue";
@@ -42,10 +47,18 @@ const id = Number(Cache.getCache("id"));
 const { object: studentsArr }: any = await getAllStudents(id);
 console.log(studentsArr);
 
-const checkInRecordArrRef = ref([]);
+const checkInRecordArrRef = ref<any[]>([]);
+const askForLeaveArrRef = ref<any[]>([]);
 const selectSudentsAction = async () => {
-  const { object: checkInRecordArr }: any = await checkInRecord(idRef.value);
-  checkInRecordArrRef.value = checkInRecordArr;
+  checkInRecordArrRef.value = [];
+  askForLeaveArrRef.value = [];
+  const { object: RecordArr }: any = await checkInAttend(idRef.value);
+  console.log(RecordArr);
+  RecordArr.forEach((Record: any) => {
+    if (Record.type === 1) checkInRecordArrRef.value.push(Record);
+    else askForLeaveArrRef.value.push(Record);
+  });
+  console.log(checkInRecordArrRef.value, askForLeaveArrRef.value);
 };
 </script>
 
@@ -56,5 +69,9 @@ const selectSudentsAction = async () => {
 
 .el-card {
   margin: 20px;
+}
+
+.table2 {
+  margin-top: 30px;
 }
 </style>
